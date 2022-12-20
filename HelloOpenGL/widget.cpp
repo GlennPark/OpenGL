@@ -3,6 +3,11 @@
 Widget::Widget(QWidget *parent)
     : QOpenGLWidget(parent)
 {
+    radius = 0.05;
+    delta_theta = 2*M_PI/20;
+    theta = 0.0;
+    cord_length = 0.5;
+
     rectPosX = 0.0f;
     rectPosY = 0.0f;
     rectSize = 250;
@@ -44,7 +49,7 @@ void Widget::resizeGL(int w, int h)
 void Widget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(1.0, 1.0, 1.0);
+//    glColor3f(1.0, 1.0, 1.0);
 
 //    glBegin(GL_POLYGON);
 //    glVertex3d(0.25, 0.25, 0.0);
@@ -97,22 +102,43 @@ void Widget::paintGL()
 //        }
 //    glEnd();
 
-    GLushort arPat[]={0xaaaa, 0xaaaa, 0xaaaa, 0xaaaa, 0x33ff, 0x33ff, 0x33ff, 0x57ff, 0x57ff};
-    GLint arFac[] = {1, 2, 3, 4, 1, 2, 3, 1, 2};
+//    GLushort arPat[]={0xaaaa, 0xaaaa, 0xaaaa, 0xaaaa, 0x33ff, 0x33ff, 0x33ff, 0x57ff, 0x57ff};
+//    GLint arFac[] = {1, 2, 3, 4, 1, 2, 3, 1, 2};
 
-    glEnable(GL_LINE_STIPPLE);
-    GLfloat w = 1, y;
-    GLint idx = 0;
-    for(y = 0.8; y > -0.8; y -= 0.2)
-    {
-        glLineStipple(arFac[idx], arPat[idx]);
-        glLineWidth(w++);
-        glBegin(GL_LINES);
-        glVertex2f(-0.8, y);
-        glVertex2f(0.8, y);
-        glEnd();
-        idx++;
+//    glEnable(GL_LINE_STIPPLE);
+//    GLfloat w = 1, y;
+//    GLint idx = 0;
+//    for(y = 0.8; y > -0.8; y -= 0.2)
+//    {
+//        glLineStipple(arFac[idx], arPat[idx]);
+//        glLineWidth(w++);
+//        glBegin(GL_LINES);
+//        glVertex2f(-0.8, y);
+//        glVertex2f(0.8, y);
+//        glEnd();
+//        idx++;
+//    }
+
+    current_angle = cos(0.1 *atime);
+
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_LINES);
+    glVertex2f(0.0, 0.0);
+    xcenter = -cord_length *sin(current_angle);
+    ycenter = -cord_length *cos(current_angle);
+    glVertex2f(xcenter, ycenter);
+    glEnd();
+
+    glColor3f(1.0, 0.0, 0.0);
+    glBegin(GL_POLYGON);
+    theta = 0;
+    while(theta <= 2*M_PI){
+        x = xcenter + radius *sin(theta);
+        y = ycenter + radius *cos(theta);
+        glVertex2f(x, y);
+        theta += delta_theta;
     }
+    glEnd();
 
     glFlush();
 }
@@ -141,4 +167,7 @@ void Widget::timerFunction()
         rectPosY = -windowHeight + rectSize -1;
 
     repaint();
+
+    atime++;
+    update();
 }

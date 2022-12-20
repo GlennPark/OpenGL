@@ -27,6 +27,12 @@ public:
     GLfloat windowWidth;
     GLfloat windowHeight;
 
+    double radius;
+    double delta_theta, cord_length;
+    double xcenter, ycenter;
+    double x, y, theta;
+    double current_angle, atime;
+
 public slots:
     void timerFunction();
 };
