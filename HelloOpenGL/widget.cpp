@@ -119,26 +119,107 @@ void Widget::paintGL()
 //        idx++;
 //    }
 
-    current_angle = cos(0.1 *atime);
+//    current_angle = cos(0.1 *atime);
 
-    glColor3f(1.0, 1.0, 1.0);
-    glBegin(GL_LINES);
-    glVertex2f(0.0, 0.0);
-    xcenter = -cord_length *sin(current_angle);
-    ycenter = -cord_length *cos(current_angle);
-    glVertex2f(xcenter, ycenter);
-    glEnd();
+//    glColor3f(1.0, 1.0, 1.0);
+//    glBegin(GL_LINES);
+//    glVertex2f(0.0, 0.0);
+//    xcenter = -cord_length *sin(current_angle);
+//    ycenter = -cord_length *cos(current_angle);
+//    glVertex2f(xcenter, ycenter);
+//    glEnd();
 
-    glColor3f(1.0, 0.0, 0.0);
-    glBegin(GL_POLYGON);
-    theta = 0;
-    while(theta <= 2*M_PI){
-        x = xcenter + radius *sin(theta);
-        y = ycenter + radius *cos(theta);
-        glVertex2f(x, y);
-        theta += delta_theta;
-    }
-    glEnd();
+//    glColor3f(1.0, 0.0, 0.0);
+//    glBegin(GL_POLYGON);
+//    theta = 0;
+//    while(theta <= 2*M_PI){
+//        x = xcenter + radius *sin(theta);
+//        y = ycenter + radius *cos(theta);
+//        glVertex2f(x, y);
+//        theta += delta_theta;
+//    }
+//    glEnd();
+
+
+//    glColor3f(1.0, 1.0, 1.0);
+//    glShadeModel(GL_FLAT);
+
+//    glBegin(GL_TRIANGLE_STRIP);
+//    GLfloat x = -0.8;
+//    GLfloat y = 0.4;
+
+//    for(int i = 0; i < 6; i++)
+//    {
+//        if(i % 2 == 0)
+//        {
+//            glColor3f(1.0, 0.0, 0.0);
+//        }
+//        else
+//        {
+//            glColor3f(1.0, 255.0, 100.0);
+//        }
+//        glVertex2f(x, y);
+//        x += 0.3;
+//        y *= -1;
+//    }
+//    glEnd();
+
+//    glColor3f(1.0, 1.0, 1.0);
+
+//    glShadeModel(GL_FLAT);
+//    glBegin(GL_TRIANGLE_FAN);
+//        glColor3f(1.0, 255.0, 0.0);
+//        glVertex2f(0.0, 0.0);
+//        glVertex2f(0.0, 0.5);
+//        glVertex2f(-0.35, 0.35);
+
+//        glColor3f(0.0, 1.0, 255.0);
+//        glVertex2f(-0.5, 0.0);
+
+//        glColor3f(1.0, 0.0, 0.0);
+//        glVertex2f(-0.35, -0.35);
+
+//        glColor3f(0.0, 1.0, 0.0);
+//        glVertex2f(0.0, -0.5);
+
+//        glColor3f(100.0, 1.0, 100.0);
+//        glVertex2f(0.35, -0.35);
+
+//        glColor3f(1.0, 1.0, 100.0);
+//        glVertex2f(0.5, 0.0);
+//        glEnd();
+
+//        glColor3f(1.0, 100.0, 100.0);
+//       glRectf(-0.8, 0.8, 0.8, -0.8);
+//        glEnd();
+
+//        glColor3f(1.0, 50.0, 100.0);
+//        glBegin(GL_QUADS);
+//        glVertex2f(0.1, 0.4);
+//        glVertex2f(-0.6, 0.1);
+//        glVertex2f(0.0, -0.6);
+//        glVertex2f(0.4, 0.0);
+//        glEnd();
+
+
+//    glColor3f(1.0, 1.0, 1.0);
+
+//    glBegin(GL_POLYGON);
+//    glVertex2f(0.0, 0.5);
+//    glVertex2f(-0.5, 0.0);
+//    glVertex2f(0.5, 0.0);
+//    glVertex2f(0.0, -0.5);
+//    glBegin(GL_TRIANGLES);
+//    glVertex2f(0.0, 0.5);
+//    glVertex2f(-0.5, 0.0);
+//    glVertex2f(0.0, 0.0);
+
+//    glVertex2f(0.0, 0.0);
+//    glVertex2f(0.5, 0.0);
+//    glVertex2f(0.0, -0.5);
+
+//    glEnd();
+
 
     glFlush();
 }
