@@ -10,9 +10,11 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
+    qtglut.cpp \
     widget.cpp
 
 HEADERS += \
+    qtglut.h \
     widget.h
 
 FORMS += \
