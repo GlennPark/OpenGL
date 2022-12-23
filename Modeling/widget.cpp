@@ -16,7 +16,7 @@ Widget::~Widget()
 
 void Widget::initializeGL()
 {
-//    initializeOpenGLFunctions();
+    initializeOpenGLFunctions();
     glClearColor(0.0, 0.0, 0.0, 0.0);
 }
 
@@ -30,9 +30,32 @@ void Widget::resizeGL(int w, int h)
 
 void Widget::paintGL()
 {
-    glTranslatef(0.0, 0.6, 0.0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glutWireTeapot(0.2);
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+
+    glColor3f(1,1,1);
+    glBegin(GL_TRIANGLES);
+    glVertex2f(0.5, 0.8);
+    glVertex2f(0.2, 0.2);
+    glVertex2f(0.8, 0.2);
+    glEnd();
+
+    glRotatef(45, 0, 0, 1);
+    glColor3f(1,1,0);
+
+    glTranslatef(0.2,-0.5,0.2);
+    glBegin(GL_TRIANGLES);
+    glVertex2f(0.5, 0.8);
+    glVertex2f(0.2, 0.2);
+    glVertex2f(0.8, 0.2);
+
+    glEnd();
+    glRotatef(45, 45, 0, 1);
+    glutWireTeapot(0.5);
+    update();
+    glPopMatrix();
+    glEnd();
     glFlush();
 }
 
